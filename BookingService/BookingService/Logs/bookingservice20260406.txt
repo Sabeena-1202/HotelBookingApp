@@ -1,0 +1,152 @@
+2026-04-06 09:06:34.618 +05:30 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE DATABASE `booking_db`;
+2026-04-06 09:06:34.798 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-04-06 09:06:34.836 +05:30 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT GET_LOCK('__booking_db_EFMigrationsLock', 259200)
+2026-04-06 09:06:35.166 +05:30 [INF] Executed DbCommand (207ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS `__EFMigrationsHistory` (
+    `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+) CHARACTER SET=utf8mb4;
+2026-04-06 09:06:35.266 +05:30 [INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='booking_db' AND TABLE_NAME='__EFMigrationsHistory';
+2026-04-06 09:06:35.290 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+2026-04-06 09:06:35.307 +05:30 [INF] Applying migration '20260406033516_InitialCreate'.
+2026-04-06 09:06:35.353 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER DATABASE CHARACTER SET utf8mb4;
+2026-04-06 09:06:35.358 +05:30 [ERR] Failed executing DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Bookings` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UserId` int NOT NULL,
+    `HotelId` int NOT NULL,
+    `RoomId` int NOT NULL,
+    `CheckInDate` datetime(6) NOT NULL,
+    `CheckOutDate` datetime(6) NOT NULL,
+    `NumberOfGuests` int NOT NULL,
+    `TotalPrice` decimal(10,2) NOT NULL,
+    `Status` varchar(20) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'Pending',
+    `SpecialRequests` varchar(200) CHARACTER SET utf8mb4 NULL,
+    `GuestEmail` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `GuestName` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `UpdatedAt` datetime(6) NULL,
+    CONSTRAINT `PK_Bookings` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+2026-04-06 09:09:52.552 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='booking_db' AND TABLE_NAME='__EFMigrationsHistory';
+2026-04-06 09:09:52.616 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+2026-04-06 09:10:50.026 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-04-06 09:10:50.108 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT GET_LOCK('__booking_db_EFMigrationsLock', 259200)
+2026-04-06 09:10:50.212 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS `__EFMigrationsHistory` (
+    `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+) CHARACTER SET=utf8mb4;
+2026-04-06 09:10:50.246 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='booking_db' AND TABLE_NAME='__EFMigrationsHistory';
+2026-04-06 09:10:50.249 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+2026-04-06 09:10:50.260 +05:30 [INF] Applying migration '20260406034031_InitialCreate'.
+2026-04-06 09:10:50.291 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER DATABASE CHARACTER SET utf8mb4;
+2026-04-06 09:10:50.359 +05:30 [INF] Executed DbCommand (68ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Bookings` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UserId` int NOT NULL,
+    `HotelId` int NOT NULL,
+    `RoomId` int NOT NULL,
+    `CheckInDate` datetime(6) NOT NULL,
+    `CheckOutDate` datetime(6) NOT NULL,
+    `NumberOfGuests` int NOT NULL,
+    `TotalPrice` decimal(10,2) NOT NULL,
+    `Status` varchar(20) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'Pending',
+    `SpecialRequests` varchar(200) CHARACTER SET utf8mb4 NULL,
+    `GuestEmail` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `GuestName` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NULL,
+    CONSTRAINT `PK_Bookings` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+2026-04-06 09:10:50.376 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20260406034031_InitialCreate', '9.0.6');
+2026-04-06 09:10:50.379 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT RELEASE_LOCK('__booking_db_EFMigrationsLock')
+2026-04-06 09:11:55.493 +05:30 [INF] User profile is available. Using 'C:\Users\pjeev\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-06 09:11:55.861 +05:30 [INF] Now listening on: https://localhost:7199
+2026-04-06 09:11:55.866 +05:30 [INF] Now listening on: http://localhost:5240
+2026-04-06 09:11:55.942 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-06 09:11:55.948 +05:30 [INF] Hosting environment: Development
+2026-04-06 09:11:55.954 +05:30 [INF] Content root path: C:\Users\pjeev\hotel-management\HotelBookingApp\BookingService\BookingService
+2026-04-06 09:12:05.696 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/ - null null
+2026-04-06 09:12:06.445 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/ - 404 null null 750.6219ms
+2026-04-06 09:12:06.479 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7199/, Response status code: 404
+2026-04-06 09:12:13.765 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/swagger - null null
+2026-04-06 09:12:13.781 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/swagger - 301 null null 16.5772ms
+2026-04-06 09:12:13.791 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/swagger/index.html - null null
+2026-04-06 09:12:13.884 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/swagger/index.html - 200 null text/html;charset=utf-8 92.257ms
+2026-04-06 09:12:13.924 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/swagger/swagger-ui.css - null null
+2026-04-06 09:12:13.924 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/swagger/index.css - null null
+2026-04-06 09:12:13.924 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/swagger/swagger-ui-bundle.js - null null
+2026-04-06 09:12:13.924 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/swagger/swagger-ui-standalone-preset.js - null null
+2026-04-06 09:12:13.926 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/swagger/index.js - null null
+2026-04-06 09:12:13.927 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-06 09:12:13.951 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/swagger/index.css - 200 152 text/css 26.3765ms
+2026-04-06 09:12:13.966 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/swagger/index.js - 200 null application/javascript;charset=utf-8 39.0952ms
+2026-04-06 09:12:13.973 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/swagger/swagger-ui.css - 200 23647 text/css 48.5492ms
+2026-04-06 09:12:13.973 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/swagger/swagger-ui-standalone-preset.js - 200 77352 text/javascript 48.2178ms
+2026-04-06 09:12:13.973 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 46.1303ms
+2026-04-06 09:12:13.973 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/swagger/swagger-ui-bundle.js - 200 424767 text/javascript 48.8837ms
+2026-04-06 09:12:13.981 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/_vs/browserLink - null null
+2026-04-06 09:12:14.118 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/_vs/browserLink - 200 null text/javascript; charset=UTF-8 137.3944ms
+2026-04-06 09:12:14.257 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/swagger/v1/swagger.json - null null
+2026-04-06 09:12:14.284 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.277ms
+2026-04-06 09:12:14.304 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/swagger/favicon-32x32.png - null null
+2026-04-06 09:12:14.315 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/swagger/favicon-32x32.png - 200 628 image/png 10.4073ms
+2026-04-06 09:23:31.807 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7199/api/Booking - application/json 265
+2026-04-06 09:23:31.865 +05:30 [INF] CORS policy execution failed.
+2026-04-06 09:23:31.870 +05:30 [INF] Request origin https://localhost:7199 does not have permission to access the resource.
+2026-04-06 09:23:31.916 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-06 09:23:31.926 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-04-06 09:23:31.933 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7199/api/Booking - 401 0 null 126.8907ms
+2026-04-06 09:24:21.617 +05:30 [INF] User profile is available. Using 'C:\Users\pjeev\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-06 09:24:23.098 +05:30 [INF] Now listening on: https://localhost:7199
+2026-04-06 09:24:23.115 +05:30 [INF] Now listening on: http://localhost:5240
+2026-04-06 09:24:23.340 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-06 09:24:23.351 +05:30 [INF] Hosting environment: Development
+2026-04-06 09:24:23.365 +05:30 [INF] Content root path: C:\Users\pjeev\hotel-management\HotelBookingApp\BookingService\BookingService
+2026-04-06 09:24:26.139 +05:30 [INF] Application is shutting down...
+2026-04-06 09:24:51.129 +05:30 [INF] User profile is available. Using 'C:\Users\pjeev\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-06 09:24:51.987 +05:30 [INF] Now listening on: https://localhost:7199
+2026-04-06 09:24:51.996 +05:30 [INF] Now listening on: http://localhost:5240
+2026-04-06 09:24:52.131 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-06 09:24:52.138 +05:30 [INF] Hosting environment: Development
+2026-04-06 09:24:52.145 +05:30 [INF] Content root path: C:\Users\pjeev\hotel-management\HotelBookingApp\BookingService\BookingService
+2026-04-06 09:24:59.336 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/ - null null
+2026-04-06 09:25:00.652 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/ - 404 null null 1344.8914ms
+2026-04-06 09:25:00.691 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7199/, Response status code: 404
+2026-04-06 09:25:06.583 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-06 09:25:06.592 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/_vs/browserLink - null null
+2026-04-06 09:25:06.756 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 173.0239ms
+2026-04-06 09:25:06.885 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/_vs/browserLink - 200 null text/javascript; charset=UTF-8 292.509ms
+2026-04-06 09:25:07.065 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7199/swagger/v1/swagger.json - null null
+2026-04-06 09:25:07.159 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7199/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 93.8643ms
+2026-04-06 09:25:19.531 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7199/api/Booking - application/json 265
+2026-04-06 09:25:19.553 +05:30 [INF] CORS policy execution failed.
+2026-04-06 09:25:19.557 +05:30 [INF] Request origin https://localhost:7199 does not have permission to access the resource.
+2026-04-06 09:25:19.575 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-06 09:25:19.589 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-04-06 09:25:19.596 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7199/api/Booking - 401 0 null 65.7338ms
