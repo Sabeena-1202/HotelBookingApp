@@ -1,0 +1,50 @@
+<div class="room-list">
+
+  <mat-card *ngFor="let room of rooms" class="room-card">
+
+    <mat-card-header>
+      <mat-card-title>Room {{ room.roomNumber }}</mat-card-title>
+      <mat-card-subtitle>{{ room.type }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <p class="description">{{ room.description }}</p>
+
+      <div class="room-info">
+        <div class="info-item">
+          <mat-icon>currency_rupee</mat-icon>
+          <span>{{ room.pricePerNight }} / night</span>
+        </div>
+        <div class="info-item">
+          <mat-icon>people</mat-icon>
+          <span>Max {{ room.maxGuests }} guests</span>
+        </div>
+      </div>
+
+      <div class="availability"
+        [class.available]="room.isAvailable"
+        [class.not-available]="!room.isAvailable">
+        <mat-icon>
+          {{ room.isAvailable ? 'check_circle' : 'cancel' }}
+        </mat-icon>
+        <span>{{ room.isAvailable ? 'Available' : 'Not Available' }}</span>
+      </div>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary"
+        [disabled]="!room.isAvailable"
+        (click)="onBookRoom(room.roomId)">
+        {{ room.isAvailable ? 'Book Now' : 'Unavailable' }}
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+
+  <p *ngIf="rooms.length === 0" class="no-rooms">
+    No rooms available.
+  </p>
+
+</div>

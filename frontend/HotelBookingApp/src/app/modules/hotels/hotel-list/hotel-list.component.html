@@ -1,0 +1,108 @@
+<div class="hotel-list-container">
+
+  <mat-card class="search-card">
+    <mat-card-title>Search Hotels</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <div class="search-row">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Location</mat-label>
+            <input matInput formControlName="location"
+              placeholder="e.g. Chennai">
+            <mat-icon matSuffix>location_on</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Min Price</mat-label>
+            <input matInput type="number"
+              formControlName="minPrice"
+              placeholder="e.g. 1000">
+            <mat-icon matSuffix>currency_rupee</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Max Price</mat-label>
+            <input matInput type="number"
+              formControlName="maxPrice"
+              placeholder="e.g. 5000">
+            <mat-icon matSuffix>currency_rupee</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Amenity</mat-label>
+            <input matInput formControlName="amenity"
+              placeholder="e.g. Pool">
+            <mat-icon matSuffix>hotel</mat-icon>
+          </mat-form-field>
+
+        </div>
+
+        <div class="search-buttons">
+          <button mat-raised-button color="primary" type="submit">
+            <mat-icon>search</mat-icon> Search
+          </button>
+          <button mat-stroked-button type="button" (click)="onReset()">
+            <mat-icon>refresh</mat-icon> Reset
+          </button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <app-spinner *ngIf="isLoading" message="Loading hotels...">
+  </app-spinner>
+
+  <div class="hotels-grid" *ngIf="!isLoading">
+
+    <mat-card *ngFor="let hotel of hotels"
+      class="hotel-card"
+      (click)="viewHotel(hotel.hotelId)">
+
+      <mat-card-header>
+        <mat-card-title>{{ hotel.name }}</mat-card-title>
+        <mat-card-subtitle>
+          <mat-icon>location_on</mat-icon>
+          {{ hotel.location }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="description">{{ hotel.description }}</p>
+
+        <div class="rating">
+          <mat-icon>star</mat-icon>
+          <span>{{ hotel.rating }}</span>
+        </div>
+
+        <div class="amenities">
+          <span class="amenity-chip"
+            *ngFor="let amenity of getAmenitiesList(hotel.amenities)">
+            {{ amenity }}
+          </span>
+        </div>
+
+        <p class="rooms-count">
+          <mat-icon>meeting_room</mat-icon>
+          {{ hotel.rooms.length }} Rooms Available
+        </p>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary"
+          (click)="viewHotel(hotel.hotelId)">
+          View Rooms
+        </button>
+      </mat-card-actions>
+
+    </mat-card>
+
+    <p *ngIf="hotels.length === 0" class="no-hotels">
+      No hotels found.
+    </p>
+
+  </div>
+
+</div>
