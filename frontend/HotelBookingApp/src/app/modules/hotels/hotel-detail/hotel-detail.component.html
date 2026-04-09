@@ -1,0 +1,92 @@
+<div class="hotel-detail-container">
+
+  <button mat-button (click)="goBack()" class="back-button">
+    <mat-icon>arrow_back</mat-icon> Back to Hotels
+  </button>
+
+  <app-spinner *ngIf="isLoading" message="Loading hotel details...">
+  </app-spinner>
+
+  <div *ngIf="!isLoading && hotel">
+
+    <mat-card class="hotel-info-card">
+      <mat-card-header>
+        <mat-card-title>{{ hotel.name }}</mat-card-title>
+        <mat-card-subtitle>
+          <mat-icon>location_on</mat-icon>
+          {{ hotel.location }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <p class="description">{{ hotel.description }}</p>
+
+        <div class="rating">
+          <mat-icon>star</mat-icon>
+          <span>{{ hotel.rating }} / 5</span>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <h3>Amenities</h3>
+        <div class="amenities">
+          <span class="amenity-chip"
+            *ngFor="let amenity of getAmenitiesList(hotel.amenities)">
+            <mat-icon>check_circle</mat-icon>
+            {{ amenity }}
+          </span>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+
+    <h2 class="rooms-title">Available Rooms</h2>
+
+    <div class="rooms-grid">
+      <mat-card *ngFor="let room of hotel.rooms" class="room-card">
+
+        <mat-card-header>
+          <mat-card-title>Room {{ room.roomNumber }}</mat-card-title>
+          <mat-card-subtitle>{{ room.type }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>{{ room.description }}</p>
+
+          <div class="room-info">
+            <span>
+              <mat-icon>currency_rupee</mat-icon>
+              {{ room.pricePerNight }} / night
+            </span>
+            <span>
+              <mat-icon>people</mat-icon>
+              Max {{ room.maxGuests }} guests
+            </span>
+          </div>
+
+          <div class="availability"
+            [class.available]="room.isAvailable"
+            [class.not-available]="!room.isAvailable">
+            <mat-icon>
+              {{ room.isAvailable ? 'check_circle' : 'cancel' }}
+            </mat-icon>
+            {{ room.isAvailable ? 'Available' : 'Not Available' }}
+          </div>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary"
+            [disabled]="!room.isAvailable"
+            (click)="bookRoom(room.roomId)">
+            {{ room.isAvailable ? 'Book Now' : 'Unavailable' }}
+          </button>
+        </mat-card-actions>
+
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>
