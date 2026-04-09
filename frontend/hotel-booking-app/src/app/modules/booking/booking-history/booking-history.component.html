@@ -1,0 +1,96 @@
+<div class="history-container">
+
+  <div class="history-header">
+    <h2>My Bookings</h2>
+    <button mat-raised-button color="primary" (click)="goToBookingForm()">
+      + New Booking
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Loading your bookings...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-alert">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && bookings.length === 0" class="no-bookings">
+    <mat-icon>hotel</mat-icon>
+    <p>No bookings found.</p>
+    <button mat-raised-button color="primary" (click)="goToBookingForm()">
+      Book Now
+    </button>
+  </div>
+
+  <mat-table [dataSource]="bookings" *ngIf="!isLoading && bookings.length > 0"
+             class="bookings-table mat-elevation-z4">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>Booking ID</mat-header-cell>
+      <mat-cell *matCellDef="let b">#{{ b.id }}</mat-cell>
+    </ng-container>
+
+    <!-- Hotel ID Column -->
+    <ng-container matColumnDef="hotelId">
+      <mat-header-cell *matHeaderCellDef>Hotel</mat-header-cell>
+      <mat-cell *matCellDef="let b">Hotel #{{ b.hotelId }}</mat-cell>
+    </ng-container>
+
+    <!-- Room ID Column -->
+    <ng-container matColumnDef="roomId">
+      <mat-header-cell *matHeaderCellDef>Room</mat-header-cell>
+      <mat-cell *matCellDef="let b">Room #{{ b.roomId }}</mat-cell>
+    </ng-container>
+
+    <!-- Check In Column -->
+    <ng-container matColumnDef="checkInDate">
+      <mat-header-cell *matHeaderCellDef>Check-In</mat-header-cell>
+      <mat-cell *matCellDef="let b">{{ b.checkInDate | date:'dd MMM yyyy' }}</mat-cell>
+    </ng-container>
+
+    <!-- Check Out Column -->
+    <ng-container matColumnDef="checkOutDate">
+      <mat-header-cell *matHeaderCellDef>Check-Out</mat-header-cell>
+      <mat-cell *matCellDef="let b">{{ b.checkOutDate | date:'dd MMM yyyy' }}</mat-cell>
+    </ng-container>
+
+    <!-- Total Price Column -->
+    <ng-container matColumnDef="totalPrice">
+      <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+      <mat-cell *matCellDef="let b">₹{{ b.totalPrice }}</mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+      <mat-cell *matCellDef="let b">
+        <span [ngClass]="{
+          'status-confirmed': b.status === 'Confirmed',
+          'status-pending': b.status === 'Pending',
+          'status-cancelled': b.status === 'Cancelled'
+        }">{{ b.status }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let b">
+        <button mat-stroked-button color="warn"
+                *ngIf="b.status !== 'Cancelled'"
+                (click)="cancelBooking(b.id)">
+          Cancel
+        </button>
+        <span *ngIf="b.status === 'Cancelled'" class="cancelled-text">Cancelled</span>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+</div>

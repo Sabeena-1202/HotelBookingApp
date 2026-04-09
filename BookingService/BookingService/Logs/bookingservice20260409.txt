@@ -1,0 +1,6 @@
+2026-04-09 09:42:37.698 +05:30 [INF] User profile is available. Using 'C:\Users\pjeev\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-09 09:42:38.870 +05:30 [INF] Now listening on: https://localhost:7199
+2026-04-09 09:42:38.876 +05:30 [INF] Now listening on: http://localhost:5240
+2026-04-09 09:42:39.415 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-09 09:42:39.419 +05:30 [INF] Hosting environment: Development
+2026-04-09 09:42:39.423 +05:30 [INF] Content root path: C:\Users\pjeev\hotel-management\HotelBookingApp\BookingService\BookingService
