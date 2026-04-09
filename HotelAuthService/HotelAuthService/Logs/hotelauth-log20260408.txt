@@ -1,0 +1,275 @@
+2026-04-08 22:13:44.114 +05:30 [INF] HotelAuthService starting up
+2026-04-08 22:13:47.022 +05:30 [INF] HotelAuthService started on port 5001
+2026-04-08 22:13:47.117 +05:30 [INF] User profile is available. Using 'C:\Users\Sabeenamuki\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-08 22:13:47.859 +05:30 [INF] Now listening on: https://localhost:7055
+2026-04-08 22:13:47.865 +05:30 [INF] Now listening on: http://localhost:5213
+2026-04-08 22:13:48.018 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-08 22:13:48.023 +05:30 [INF] Hosting environment: Development
+2026-04-08 22:13:48.027 +05:30 [INF] Content root path: D:\SabeenaFolder\PracticeProjects-HclTech\HotelBookingApp\HotelAuthService\HotelAuthService
+2026-04-08 22:13:49.697 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2026-04-08 22:13:49.697 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-08 22:13:49.840 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript; charset=utf-8 166.1196ms
+2026-04-08 22:13:50.324 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 654.2967ms
+2026-04-08 22:13:50.469 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2026-04-08 22:13:50.607 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 138.2082ms
+2026-04-08 22:15:12.393 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7055/api/auth/login - application/json 59
+2026-04-08 22:15:12.572 +05:30 [INF] CORS policy execution failed.
+2026-04-08 22:15:12.577 +05:30 [INF] Request origin https://localhost:7055 does not have permission to access the resource.
+2026-04-08 22:15:16.785 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.AuthController.Login (HotelAuthService)'
+2026-04-08 22:15:16.882 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(HotelAuthService.DTOs.LoginDto) on controller HotelAuthService.Controllers.AuthController (HotelAuthService).
+2026-04-08 22:15:18.772 +05:30 [INF] Login attempt for email: sabeena@gmail.com
+2026-04-08 22:15:21.032 +05:30 [INF] Executed DbCommand (113ms) [Parameters=[@__email_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`UserId`, `u`.`Email`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Role`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2026-04-08 22:15:21.843 +05:30 [INF] Login successful for email: sabeena@gmail.com
+2026-04-08 22:15:21.869 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-08 22:15:21.903 +05:30 [INF] Executed action HotelAuthService.Controllers.AuthController.Login (HotelAuthService) in 5001.1021ms
+2026-04-08 22:15:21.918 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.AuthController.Login (HotelAuthService)'
+2026-04-08 22:15:21.945 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7055/api/auth/login - 200 null application/json; charset=utf-8 9631.127ms
+2026-04-08 22:15:58.922 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/all - null null
+2026-04-08 22:15:59.146 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.GetAllHotels (HotelAuthService)'
+2026-04-08 22:15:59.160 +05:30 [INF] Route matched with {action = "GetAllHotels", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllHotels() on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:15:59.199 +05:30 [INF] Fetching all hotels
+2026-04-08 22:15:59.467 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `h`.`HotelId`, `h`.`Amenities`, `h`.`Description`, `h`.`Location`, `h`.`Name`, `h`.`Rating`, `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM `Hotels` AS `h`
+LEFT JOIN `Rooms` AS `r` ON `h`.`HotelId` = `r`.`HotelId`
+ORDER BY `h`.`HotelId`
+2026-04-08 22:15:59.530 +05:30 [INF] Fetched 3 hotels successfully
+2026-04-08 22:15:59.536 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[HotelAuthService.Models.Hotel, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[HotelAuthService.DTOs.HotelDto, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-08 22:15:59.569 +05:30 [INF] Executed action HotelAuthService.Controllers.HotelController.GetAllHotels (HotelAuthService) in 399.9825ms
+2026-04-08 22:15:59.574 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.HotelController.GetAllHotels (HotelAuthService)'
+2026-04-08 22:15:59.581 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/api/hotel/all - 200 null application/json; charset=utf-8 659.3084ms
+2026-04-08 22:19:21.726 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/search?location=1 - null null
+2026-04-08 22:19:21.821 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService)'
+2026-04-08 22:19:21.864 +05:30 [INF] Route matched with {action = "SearchHotels", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchHotels(System.String) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:19:21.974 +05:30 [INF] Searching hotels for location: 1
+2026-04-08 22:19:22.429 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__ToLower_0_contains='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `h`.`HotelId`, `h`.`Amenities`, `h`.`Description`, `h`.`Location`, `h`.`Name`, `h`.`Rating`, `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM `Hotels` AS `h`
+LEFT JOIN `Rooms` AS `r` ON `h`.`HotelId` = `r`.`HotelId`
+WHERE LOWER(`h`.`Location`) LIKE @__ToLower_0_contains
+ORDER BY `h`.`HotelId`
+2026-04-08 22:19:22.440 +05:30 [INF] Found 0 hotels for location: 1
+2026-04-08 22:19:22.445 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[HotelAuthService.Models.Hotel, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[HotelAuthService.DTOs.HotelDto, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-08 22:19:22.447 +05:30 [INF] Executed action HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService) in 577.2367ms
+2026-04-08 22:19:22.454 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService)'
+2026-04-08 22:19:22.457 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/api/hotel/search?location=1 - 200 null application/json; charset=utf-8 735.0432ms
+2026-04-08 22:19:34.027 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/search?location=10 - null null
+2026-04-08 22:19:34.064 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService)'
+2026-04-08 22:19:34.083 +05:30 [INF] Route matched with {action = "SearchHotels", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchHotels(System.String) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:19:34.122 +05:30 [INF] Searching hotels for location: 10
+2026-04-08 22:19:34.147 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__ToLower_0_contains='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `h`.`HotelId`, `h`.`Amenities`, `h`.`Description`, `h`.`Location`, `h`.`Name`, `h`.`Rating`, `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM `Hotels` AS `h`
+LEFT JOIN `Rooms` AS `r` ON `h`.`HotelId` = `r`.`HotelId`
+WHERE LOWER(`h`.`Location`) LIKE @__ToLower_0_contains
+ORDER BY `h`.`HotelId`
+2026-04-08 22:19:34.154 +05:30 [INF] Found 0 hotels for location: 10
+2026-04-08 22:19:34.158 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[HotelAuthService.Models.Hotel, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[HotelAuthService.DTOs.HotelDto, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-08 22:19:34.170 +05:30 [INF] Executed action HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService) in 77.4878ms
+2026-04-08 22:19:34.177 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService)'
+2026-04-08 22:19:34.184 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/api/hotel/search?location=10 - 200 null application/json; charset=utf-8 156.3172ms
+2026-04-08 22:19:42.669 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/search?location=11 - null null
+2026-04-08 22:19:42.719 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService)'
+2026-04-08 22:19:42.732 +05:30 [INF] Route matched with {action = "SearchHotels", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchHotels(System.String) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:19:42.769 +05:30 [INF] Searching hotels for location: 11
+2026-04-08 22:19:42.779 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__ToLower_0_contains='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `h`.`HotelId`, `h`.`Amenities`, `h`.`Description`, `h`.`Location`, `h`.`Name`, `h`.`Rating`, `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM `Hotels` AS `h`
+LEFT JOIN `Rooms` AS `r` ON `h`.`HotelId` = `r`.`HotelId`
+WHERE LOWER(`h`.`Location`) LIKE @__ToLower_0_contains
+ORDER BY `h`.`HotelId`
+2026-04-08 22:19:42.785 +05:30 [INF] Found 0 hotels for location: 11
+2026-04-08 22:19:42.788 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[HotelAuthService.Models.Hotel, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[HotelAuthService.DTOs.HotelDto, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-08 22:19:42.793 +05:30 [INF] Executed action HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService) in 47.3907ms
+2026-04-08 22:19:42.809 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService)'
+2026-04-08 22:19:42.814 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/api/hotel/search?location=11 - 200 null application/json; charset=utf-8 144.2562ms
+2026-04-08 22:20:44.700 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/search?location=chennai - null null
+2026-04-08 22:20:44.741 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService)'
+2026-04-08 22:20:44.750 +05:30 [INF] Route matched with {action = "SearchHotels", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchHotels(System.String) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:20:44.797 +05:30 [INF] Searching hotels for location: chennai
+2026-04-08 22:20:44.806 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__ToLower_0_contains='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `h`.`HotelId`, `h`.`Amenities`, `h`.`Description`, `h`.`Location`, `h`.`Name`, `h`.`Rating`, `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM `Hotels` AS `h`
+LEFT JOIN `Rooms` AS `r` ON `h`.`HotelId` = `r`.`HotelId`
+WHERE LOWER(`h`.`Location`) LIKE @__ToLower_0_contains
+ORDER BY `h`.`HotelId`
+2026-04-08 22:20:44.824 +05:30 [INF] Found 1 hotels for location: chennai
+2026-04-08 22:20:44.827 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[HotelAuthService.Models.Hotel, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[HotelAuthService.DTOs.HotelDto, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-08 22:20:44.834 +05:30 [INF] Executed action HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService) in 68.7495ms
+2026-04-08 22:20:44.879 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService)'
+2026-04-08 22:20:44.883 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/api/hotel/search?location=chennai - 200 null application/json; charset=utf-8 182.7927ms
+2026-04-08 22:21:12.513 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/1 - null null
+2026-04-08 22:21:12.550 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.GetHotelById (HotelAuthService)'
+2026-04-08 22:21:12.568 +05:30 [INF] Route matched with {action = "GetHotelById", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetHotelById(Int32) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:21:12.618 +05:30 [INF] Fetching hotel with id: 1
+2026-04-08 22:21:12.698 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@__hotelId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `h0`.`HotelId`, `h0`.`Amenities`, `h0`.`Description`, `h0`.`Location`, `h0`.`Name`, `h0`.`Rating`, `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM (
+    SELECT `h`.`HotelId`, `h`.`Amenities`, `h`.`Description`, `h`.`Location`, `h`.`Name`, `h`.`Rating`
+    FROM `Hotels` AS `h`
+    WHERE `h`.`HotelId` = @__hotelId_0
+    LIMIT 1
+) AS `h0`
+LEFT JOIN `Rooms` AS `r` ON `h0`.`HotelId` = `r`.`HotelId`
+ORDER BY `h0`.`HotelId`
+2026-04-08 22:30:26.872 +05:30 [INF] HotelAuthService starting up
+2026-04-08 22:30:29.822 +05:30 [INF] HotelAuthService started on port 5001
+2026-04-08 22:30:29.946 +05:30 [INF] User profile is available. Using 'C:\Users\Sabeenamuki\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-08 22:30:30.677 +05:30 [INF] Now listening on: https://localhost:7055
+2026-04-08 22:30:30.682 +05:30 [INF] Now listening on: http://localhost:5213
+2026-04-08 22:30:30.807 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-08 22:30:30.811 +05:30 [INF] Hosting environment: Development
+2026-04-08 22:30:30.815 +05:30 [INF] Content root path: D:\SabeenaFolder\PracticeProjects-HclTech\HotelBookingApp\HotelAuthService\HotelAuthService
+2026-04-08 22:30:31.480 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2026-04-08 22:30:31.479 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-08 22:30:31.689 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript; charset=utf-8 223.3503ms
+2026-04-08 22:30:31.815 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 353.8667ms
+2026-04-08 22:30:31.905 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2026-04-08 22:30:32.045 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 140.8291ms
+2026-04-08 22:34:25.970 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7055/api/auth/login - application/json 59
+2026-04-08 22:34:26.217 +05:30 [INF] CORS policy execution failed.
+2026-04-08 22:34:26.220 +05:30 [INF] Request origin https://localhost:7055 does not have permission to access the resource.
+2026-04-08 22:34:26.436 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.AuthController.Login (HotelAuthService)'
+2026-04-08 22:34:26.520 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(HotelAuthService.DTOs.LoginDto) on controller HotelAuthService.Controllers.AuthController (HotelAuthService).
+2026-04-08 22:34:27.511 +05:30 [INF] Login attempt for email: sabeena@gmail.com
+2026-04-08 22:34:29.885 +05:30 [INF] Executed DbCommand (126ms) [Parameters=[@__email_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`UserId`, `u`.`Email`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Role`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2026-04-08 22:34:30.659 +05:30 [INF] Login successful for email: sabeena@gmail.com
+2026-04-08 22:34:30.681 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-08 22:34:30.722 +05:30 [INF] Executed action HotelAuthService.Controllers.AuthController.Login (HotelAuthService) in 4176.6767ms
+2026-04-08 22:34:30.737 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.AuthController.Login (HotelAuthService)'
+2026-04-08 22:34:30.759 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7055/api/auth/login - 200 null application/json; charset=utf-8 4804.3992ms
+2026-04-08 22:35:17.569 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/search?location=chennai - null null
+2026-04-08 22:35:17.790 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService)'
+2026-04-08 22:35:17.827 +05:30 [INF] Route matched with {action = "SearchHotels", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchHotels(System.String) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:35:17.878 +05:30 [INF] Searching hotels for location: chennai
+2026-04-08 22:35:18.195 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@__ToLower_0_contains='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `h`.`HotelId`, `h`.`Amenities`, `h`.`Description`, `h`.`Location`, `h`.`Name`, `h`.`Rating`, `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM `Hotels` AS `h`
+LEFT JOIN `Rooms` AS `r` ON `h`.`HotelId` = `r`.`HotelId`
+WHERE LOWER(`h`.`Location`) LIKE @__ToLower_0_contains
+ORDER BY `h`.`HotelId`
+2026-04-08 22:35:18.276 +05:30 [INF] Found 1 hotels for location: chennai
+2026-04-08 22:35:18.284 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[HotelAuthService.Models.Hotel, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[HotelAuthService.DTOs.HotelDto, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-08 22:35:18.316 +05:30 [INF] Executed action HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService) in 481.8386ms
+2026-04-08 22:35:18.324 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.HotelController.SearchHotels (HotelAuthService)'
+2026-04-08 22:35:18.326 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/api/hotel/search?location=chennai - 200 null application/json; charset=utf-8 757.425ms
+2026-04-08 22:36:26.786 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/1 - null null
+2026-04-08 22:36:26.805 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.GetHotelById (HotelAuthService)'
+2026-04-08 22:36:26.820 +05:30 [INF] Route matched with {action = "GetHotelById", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetHotelById(Int32) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:36:26.956 +05:30 [INF] Fetching hotel with id: 1
+2026-04-08 22:36:27.171 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__hotelId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `h0`.`HotelId`, `h0`.`Amenities`, `h0`.`Description`, `h0`.`Location`, `h0`.`Name`, `h0`.`Rating`, `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM (
+    SELECT `h`.`HotelId`, `h`.`Amenities`, `h`.`Description`, `h`.`Location`, `h`.`Name`, `h`.`Rating`
+    FROM `Hotels` AS `h`
+    WHERE `h`.`HotelId` = @__hotelId_0
+    LIMIT 1
+) AS `h0`
+LEFT JOIN `Rooms` AS `r` ON `h0`.`HotelId` = `r`.`HotelId`
+ORDER BY `h0`.`HotelId`
+2026-04-08 22:38:50.251 +05:30 [INF] HotelAuthService starting up
+2026-04-08 22:38:52.471 +05:30 [INF] HotelAuthService started on port 5001
+2026-04-08 22:38:52.589 +05:30 [INF] User profile is available. Using 'C:\Users\Sabeenamuki\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-08 22:38:53.340 +05:30 [INF] Now listening on: https://localhost:7055
+2026-04-08 22:38:53.374 +05:30 [INF] Now listening on: http://localhost:5213
+2026-04-08 22:38:53.669 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-08 22:38:53.741 +05:30 [INF] Hosting environment: Development
+2026-04-08 22:38:53.750 +05:30 [INF] Content root path: D:\SabeenaFolder\PracticeProjects-HclTech\HotelBookingApp\HotelAuthService\HotelAuthService
+2026-04-08 22:38:54.565 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2026-04-08 22:38:54.564 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-08 22:38:55.125 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript; charset=utf-8 589.4119ms
+2026-04-08 22:38:55.273 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 737.3004ms
+2026-04-08 22:38:55.377 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2026-04-08 22:38:55.573 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 199.3682ms
+2026-04-08 22:39:13.706 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7055/api/auth/login - application/json 59
+2026-04-08 22:39:13.758 +05:30 [INF] CORS policy execution failed.
+2026-04-08 22:39:13.766 +05:30 [INF] Request origin https://localhost:7055 does not have permission to access the resource.
+2026-04-08 22:39:13.939 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.AuthController.Login (HotelAuthService)'
+2026-04-08 22:39:14.003 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(HotelAuthService.DTOs.LoginDto) on controller HotelAuthService.Controllers.AuthController (HotelAuthService).
+2026-04-08 22:39:14.836 +05:30 [INF] Login attempt for email: sabeena@gmail.com
+2026-04-08 22:39:17.303 +05:30 [INF] Executed DbCommand (125ms) [Parameters=[@__email_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`UserId`, `u`.`Email`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Role`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2026-04-08 22:39:18.259 +05:30 [INF] Login successful for email: sabeena@gmail.com
+2026-04-08 22:39:18.282 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-08 22:39:18.307 +05:30 [INF] Executed action HotelAuthService.Controllers.AuthController.Login (HotelAuthService) in 4287.3137ms
+2026-04-08 22:39:18.315 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.AuthController.Login (HotelAuthService)'
+2026-04-08 22:39:18.345 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7055/api/auth/login - 200 null application/json; charset=utf-8 4639.5124ms
+2026-04-08 22:39:47.940 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/10 - null null
+2026-04-08 22:39:48.188 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.GetHotelById (HotelAuthService)'
+2026-04-08 22:39:48.212 +05:30 [INF] Route matched with {action = "GetHotelById", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetHotelById(Int32) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:39:48.249 +05:30 [INF] Fetching hotel with id: 10
+2026-04-08 22:39:48.566 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[@__hotelId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `h0`.`HotelId`, `h0`.`Amenities`, `h0`.`Description`, `h0`.`Location`, `h0`.`Name`, `h0`.`Rating`, `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM (
+    SELECT `h`.`HotelId`, `h`.`Amenities`, `h`.`Description`, `h`.`Location`, `h`.`Name`, `h`.`Rating`
+    FROM `Hotels` AS `h`
+    WHERE `h`.`HotelId` = @__hotelId_0
+    LIMIT 1
+) AS `h0`
+LEFT JOIN `Rooms` AS `r` ON `h0`.`HotelId` = `r`.`HotelId`
+ORDER BY `h0`.`HotelId`
+2026-04-08 22:39:48.636 +05:30 [INF] Fetched hotel: Grand Palace Hotel successfully
+2026-04-08 22:39:48.651 +05:30 [INF] Executing OkObjectResult, writing value of type 'HotelAuthService.DTOs.HotelDto'.
+2026-04-08 22:39:48.700 +05:30 [INF] Executed action HotelAuthService.Controllers.HotelController.GetHotelById (HotelAuthService) in 483.7511ms
+2026-04-08 22:39:48.705 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.HotelController.GetHotelById (HotelAuthService)'
+2026-04-08 22:39:48.710 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/api/hotel/10 - 200 null application/json; charset=utf-8 780.227ms
+2026-04-08 22:39:59.241 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/11/rooms - null null
+2026-04-08 22:39:59.284 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.GetRoomsByHotelId (HotelAuthService)'
+2026-04-08 22:39:59.318 +05:30 [INF] Route matched with {action = "GetRoomsByHotelId", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoomsByHotelId(Int32) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:39:59.349 +05:30 [INF] Fetching rooms for hotel id: 11
+2026-04-08 22:39:59.521 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__hotelId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM `Rooms` AS `r`
+WHERE `r`.`HotelId` = @__hotelId_0
+2026-04-08 22:39:59.529 +05:30 [INF] Fetched 0 rooms for hotel id: 11
+2026-04-08 22:39:59.535 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[HotelAuthService.Models.Room, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[HotelAuthService.DTOs.RoomDto, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-08 22:39:59.539 +05:30 [INF] Executed action HotelAuthService.Controllers.HotelController.GetRoomsByHotelId (HotelAuthService) in 215.2887ms
+2026-04-08 22:39:59.546 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.HotelController.GetRoomsByHotelId (HotelAuthService)'
+2026-04-08 22:39:59.548 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/api/hotel/11/rooms - 200 null application/json; charset=utf-8 307.5017ms
+2026-04-08 22:40:36.190 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/10/rooms - null null
+2026-04-08 22:40:36.284 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.GetRoomsByHotelId (HotelAuthService)'
+2026-04-08 22:40:36.289 +05:30 [INF] Route matched with {action = "GetRoomsByHotelId", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoomsByHotelId(Int32) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:40:36.322 +05:30 [INF] Fetching rooms for hotel id: 10
+2026-04-08 22:40:36.336 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__hotelId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM `Rooms` AS `r`
+WHERE `r`.`HotelId` = @__hotelId_0
+2026-04-08 22:40:36.343 +05:30 [INF] Fetched 0 rooms for hotel id: 10
+2026-04-08 22:40:36.347 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[HotelAuthService.Models.Room, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[HotelAuthService.DTOs.RoomDto, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-08 22:40:36.349 +05:30 [INF] Executed action HotelAuthService.Controllers.HotelController.GetRoomsByHotelId (HotelAuthService) in 54.0293ms
+2026-04-08 22:40:36.368 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.HotelController.GetRoomsByHotelId (HotelAuthService)'
+2026-04-08 22:40:36.370 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/api/hotel/10/rooms - 200 null application/json; charset=utf-8 180.4289ms
+2026-04-08 22:40:40.300 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/1/rooms - null null
+2026-04-08 22:40:40.313 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.GetRoomsByHotelId (HotelAuthService)'
+2026-04-08 22:40:40.319 +05:30 [INF] Route matched with {action = "GetRoomsByHotelId", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoomsByHotelId(Int32) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:40:40.340 +05:30 [INF] Fetching rooms for hotel id: 1
+2026-04-08 22:40:40.351 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__hotelId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`
+FROM `Rooms` AS `r`
+WHERE `r`.`HotelId` = @__hotelId_0
+2026-04-08 22:40:40.406 +05:30 [INF] Fetched 3 rooms for hotel id: 1
+2026-04-08 22:40:40.410 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[HotelAuthService.Models.Room, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[HotelAuthService.DTOs.RoomDto, HotelAuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-08 22:40:40.424 +05:30 [INF] Executed action HotelAuthService.Controllers.HotelController.GetRoomsByHotelId (HotelAuthService) in 100.6502ms
+2026-04-08 22:40:40.430 +05:30 [INF] Executed endpoint 'HotelAuthService.Controllers.HotelController.GetRoomsByHotelId (HotelAuthService)'
+2026-04-08 22:40:40.435 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7055/api/hotel/1/rooms - 200 null application/json; charset=utf-8 135.2793ms
+2026-04-08 22:41:50.307 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7055/api/hotel/room/39 - null null
+2026-04-08 22:41:50.430 +05:30 [INF] Executing endpoint 'HotelAuthService.Controllers.HotelController.GetRoomById (HotelAuthService)'
+2026-04-08 22:41:50.465 +05:30 [INF] Route matched with {action = "GetRoomById", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRoomById(Int32) on controller HotelAuthService.Controllers.HotelController (HotelAuthService).
+2026-04-08 22:41:50.536 +05:30 [INF] Fetching room with id: 39
+2026-04-08 22:41:50.593 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__roomId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`RoomId`, `r`.`Description`, `r`.`HotelId`, `r`.`IsAvailable`, `r`.`MaxGuests`, `r`.`PricePerNight`, `r`.`RoomNumber`, `r`.`Type`, `h`.`HotelId`, `h`.`Amenities`, `h`.`Description`, `h`.`Location`, `h`.`Name`, `h`.`Rating`
+FROM `Rooms` AS `r`
+INNER JOIN `Hotels` AS `h` ON `r`.`HotelId` = `h`.`HotelId`
+WHERE `r`.`RoomId` = @__roomId_0
+LIMIT 1
